@@ -1,12 +1,14 @@
+import Forms from "../../components/Forms";
+import CreateMap from "../../components/Maps";
 import { Container } from "./style";
 
-
-export default function HomePage(){
-    return(
-        <>
-            <Container>
-                Hello World!
-            </Container>
-        </>
-    )
+export default function HomePage() {
+  return (
+    <>
+      <Container>
+        <Forms />
+        <CreateMap/>
+      </Container>
+    </>
+  );
 }
