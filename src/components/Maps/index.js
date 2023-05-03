@@ -1,7 +1,8 @@
 import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import { ContainerMap } from "./style";
-import { useState } from "react";
+import { ContainerMap, LoadingCenter } from "./Map";
+// import { useState } from "react";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const containerStyle = {
   width: "100%",
@@ -13,8 +14,8 @@ const center = {
   lng: -38.558930105104125,
 };
 
-export default function CreateMap() {
-  const [markerPosition, setMarkerPosition] = useState(null);
+export default function CreateMap(markerPosition, setMarkerPosition) {
+  // const [markerPosition, setMarkerPosition] = useState(null);
 
   const handleMapClick = (e) => {
     setMarkerPosition({
@@ -37,10 +38,23 @@ export default function CreateMap() {
           zoom={14}
           onClick={handleMapClick}
         >
-          {markerPosition && <Marker position={markerPosition} cursor="pointer" />}
+          {markerPosition && (
+            <Marker position={markerPosition} cursor="pointer" />
+          )}
         </GoogleMap>
       ) : (
-        <>Loading...</>
+        <LoadingCenter>
+          <MagnifyingGlass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="MagnifyingGlass-loading"
+            wrapperStyle={{}}
+            wrapperClass="MagnifyingGlass-wrapper"
+            glassColor="#c0efff"
+            color="#000"
+          />
+        </LoadingCenter>
       )}
     </ContainerMap>
   );
