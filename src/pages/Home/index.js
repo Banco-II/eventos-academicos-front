@@ -21,7 +21,7 @@ export default function HomePage() {
   const [form, setForm] = useState({ name: "", description: "" });
   const [markerPosition, setMarkerPosition] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleForm(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -29,26 +29,26 @@ export default function HomePage() {
 
   function createEvent(e) {
     e.preventDefault();
-    
-    if(markerPosition === null){
-      alert("Informe o ponto onde irá ocorrer o evento")
-      return
+
+    if (markerPosition === null) {
+      alert("Informe o ponto onde irá ocorrer o evento");
+      return;
     }
     const url = "http://localhost:4000/location";
 
     axios
       .post(url, {
-        name:form.name,
-        description:form.description,
-        latitude:markerPosition.lat,
-        longitude:markerPosition.lng
+        name: form.name,
+        description: form.description,
+        latitude: markerPosition.lat,
+        longitude: markerPosition.lng,
       })
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         navigate("/locations");
       })
       .catch((err) => {
-        alert(err.response.data.message)
+        alert(err.response.data.message);
         console.log(err.response.data);
       });
   }
@@ -70,9 +70,10 @@ export default function HomePage() {
       <Container>
         <Form onSubmit={createEvent}>
           <h1>
-            Create new <br /> Event
+            Cria novo
+            <br /> Evento
           </h1>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Nome</label>
           <input
             id="name"
             type="text"
@@ -82,7 +83,7 @@ export default function HomePage() {
             required
             placeholder="Type the event name"
           />
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Descrição</label>
           <input
             id="description"
             type="text"
