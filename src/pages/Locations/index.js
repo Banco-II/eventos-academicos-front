@@ -44,9 +44,9 @@ export default function LocationsPage() {
             center={center}
             zoom={14}
           >
-            {markerPosition && (
-              <Marker position={markerPosition} cursor="pointer" />
-            )}
+            {markerPosition && markerPosition.map(el=><Marker position={{lat:el.latitude,lng:el.longitude}} options={{label:{
+              text:el.name
+            }}} cursor="pointer" />)}
           </GoogleMap>
         ) : (
           <LoadingCenter>
@@ -62,7 +62,7 @@ export default function LocationsPage() {
             />
           </LoadingCenter>
         )}
-        <Button />
+        <Button/>
       </ContainerMap>
     </>
   );
