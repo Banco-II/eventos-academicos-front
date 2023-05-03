@@ -8,6 +8,7 @@ function App() {
   <GlobalStyle/>
     <Routes>
       <Route path="/" element={<HomePage/>}/>
+      <Route path="/locations" element={<></>}/>
     </Routes>
   </BrowserRouter>);
 }
