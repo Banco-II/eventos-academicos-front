@@ -93,7 +93,7 @@ export default function HomePage() {
             required
             placeholder="Describe the event"
           />
-          <button type="submit">create</button>
+          <button type="submit">criar evento</button>
         </Form>
         <ContainerMap>
           {isLoaded ? (
